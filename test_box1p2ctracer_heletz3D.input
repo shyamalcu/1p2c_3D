@@ -1,0 +1,52 @@
+###############################################################
+# Parameter file for test_1p2c.
+# Everything behind a '#' is a comment.
+# Type "./test_1p2c --help" for more information.
+###############################################################
+
+###############################################################
+# Mandatory arguments
+###############################################################
+
+[TimeManager]
+DtInitial = 1e-0 # [s]
+TEnd = 31536000 # [s]
+
+[Grid]
+File = ./grids/test_1p2c_3DHeletz.dgf
+
+[InitialConditions]
+temperature = 323.15 # [°K] initial temperature in the reservoir
+distanceBetweenWells = 50 # [m] distance between the two wells
+injectionTime = 48 # [h] 
+waterInjRate  = 5 # [m^3/h]
+
+[SpatialParameters]
+lensA_width = 6.2 # [m]
+lensW_width = 3.2 # [m]
+lensK_width = 1.2 # [m]
+lensShaleUp_width = 1.5 # [m]
+lensShaleDown_width = 3.2 # [m]
+permSoilSandStoneAvg = 9.7e-15 # [m^2]
+permSoilShaleAvg = 9.7e-18 # [m^2]
+porositySoilSandStoneAvg = 0.143 # Table 1 D062 MUSTANG
+porositySoilShaleAvg = 0.31 # 
+
+
+[Problem]
+Name = outflowbox # name passed to the output routines
+Dispersivity = 1.0 # dispersivity coefficient
+Permeability = 1e-12 # permeability
+Porosity = 0.2 # porosity
+EpisodeEnd = 86400 # time interval
+###############################################################
+# Simulation restart
+#
+# DuMux simulations can be restarted from *.drs files
+# Set Restart to the value of a specific file, 
+# e.g.:  'Restart = 27184.1' for the restart file
+# name_time=27184.1_rank=0.drs
+# Please comment in the two lines below, if restart is desired.
+###############################################################
+# [TimeManager]
+# Restart = ... 
